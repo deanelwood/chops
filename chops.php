@@ -7,6 +7,7 @@
 
     Tail a log and push ERRORS and cummulative WARNings into Slack channel
     Ignore DEBUG
+
 */
 
 /*
