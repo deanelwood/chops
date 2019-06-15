@@ -9,8 +9,26 @@
 */
 
 
-function postToSlackChannel($sender, $message, $webHook) {
+function postToSlackChannel($sender, $message, $webHook, $type=_SYSTEM_MESSAGE) {
     if ($message == "") return;
+
+    switch ($type) {
+        case _SYSTEM_MESSAGE :
+            $prefix = "[$sender]";
+            break;
+
+        case _WARN_MESSAGE :
+            $prefix = "[$sender] WARNing message threshold exceeded:\n";
+            break;
+
+        case _ERROR_MESSAGE :
+            $prefix = "[$sender] ERROR message triggered:\n";
+            break;
+
+        default:
+            $prefix = "[$sender]";
+
+    }
 
     $opts = array(
         'ssl' => array(
@@ -21,7 +39,7 @@ function postToSlackChannel($sender, $message, $webHook) {
         'http' => array(
             'method' => 'POST',
             'header' => 'Content-type: application/json',
-            'content' => '{"text":"['.$sender.'] '.$message.'"}'
+            'content' => '{"text":"'.$prefix.' `'.$message.'`"}'
         )
     );
 

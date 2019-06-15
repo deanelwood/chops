@@ -17,75 +17,28 @@
     As at current version we don't do much more than post ERRORs into Slack and WARNings into
     Slack when they exceed a certain threshold in a particular time window.
 
-    But we expect this to evolve....
 */
 
 define("_SERVER", php_uname("n"));
 
 /*
-    Your Slack web hook URL. To set this up you first need to create a Slack chatbot application, then
-    add the webhook for it in this define.
-
-    To create Slack web hooks, see : https://api.slack.com/incoming-webhooks#create_a_webhook
+    Load up our config from chops.conf
 */
 
-define("_SLACK_WEB_HOOK_URL",    "");
 
+$config = parse_ini_file("chops.conf");
 
-
-/*
-    Define here the logfile that you wish to monitor and have CHOPS sent alerts into the Channel for.
-*/
-
-define("_LOG_FILE_TAIL",         "/var/log/test.log");
-
-
-
-/*
-    WARN ing REGEX pattern
-*/
-define("_WARN_PATTERN", "/WARN/");
-
-
-
-
-
-/*
-    ERROR ing REGEX pattern
-*/
-define("_ERROR_PATTERN", "/ERROR/");
-
-
-
-
-/*
-    How many WARN messages before we POST a message into Slack.
-    Generally, when you're monitoring an application WARN-ings will occur. You probably don't want to
-    be woken up unless there's a few of them...
-*/
-
-define("_WARNINGS_BEFORE_ALARM", 3);
-
-
-
-/*
-    This is the window of time that works in conjunction with _WARNINGS_BEFORE_ALARM
-    If it is non-zero, then _WARNINGS_BEFORE_ALARM must occur within this many minutes.
-
-    EG : you can use this to say "send a message to my Slack channel if you see 3 WARN-ings in the
-    space of 5 minutes.
-
-    To do that you would set _WARNINGS_BEFORE_ALARM to 3, and _WARNINGS_WINDOW to 5
-*/
-
-define("_WARNINGS_WINDOW",       5); // Number of minutes window for warnings
-
-
-
-/*
-    We are allowed to send this many messages per second into a Slack Channel
-*/
+define("_SLACK_WEB_HOOK_URL",    $config[slackurl]);
+define("_LOG_FILE_TAIL",         $config[logfile]);
+define("_WARN_PATTERN",          $config[warnpattern]);
+define("_ERROR_PATTERN",         $config[errorpattern]);
+define("_WARNINGS_BEFORE_ALARM", $config[warningsbeforealarm]);
+define("_WARNINGS_WINDOW",       $config[warningswindow]);
 
 define("_MESSAGES_PER_SECOND", 2);
+
+define("_WARN_MESSAGE",   0);
+define("_ERROR_MESSAGE",  1);
+define("_SYSTEM_MESSAGE", 2);
 
 ?>
