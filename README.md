@@ -21,15 +21,44 @@ On Ubuntu or Debian, it would require something like this:
 
     apt-get install php-cli
     
-##Installation
+## Installation
 
 Once you have installed the dependencies, get the code:
 
 	git clone https://github.com/deanelwood/chops.git /usr/local/chops
 	cd /usr/local/chops
   
-##Configuration and Launch
+## Create your Slack app and get a Web Hook URL
 
-Install this code somewhere and then configure by editing config.php.
+You will need a Web Hook URL to the Slack channel that you wish to post log messages into. I recommend that you start here:
 
-You can then launch with php /path/to/chops.php &
+* [Slack Incoming WebHooks] {https://api.slack.com/incoming-webhooks#getting-started}
+
+Once you have created your app and Slack has given you a URL to use for the webhook you can configure CHOPS.
+
+## Configuration
+
+You will need to edit some values in /usr/local/chops/common/config.php, at least these:
+
+	define("_SLACK_WEB_HOOK_URL",    "<YOUR-WEB-HOOK-URL>");
+	define("_LOG_FILE_TAIL",         "<YOUR-INTERESTING-LOG-FILE>");
+	define("_WARN_PATTERN",          "/<PATTERN_WARN>/");
+	define("_ERROR_PATTERN",         "/<PATTERN_ERROR>/");
+
+An example configuration that monitors the file /var/log/myapp.log might look like this:
+
+	define("_SLACK_WEB_HOOK_URL",    "https://hooks.slack.com/services/24wartdgfx/24rawedgfxc");
+	define("_LOG_FILE_TAIL",         "/var/log/myapp.log");
+	define("_WARN_PATTERN",          "/WARN/");
+	define("_ERROR_PATTERN",         "/ERROR/");
+
+With this example configuration, any lines in /var/log/myapp.log that are spotted containing the text "ERROR" will be sent immediately to your Slack channel. Any lines that contain the text "WARN" will be counted and if more than 3 are seen in a space of 5 minutes a message will be posted into the Slack channel. You can change these presets by altering the values 3 and 5 for WARNINGS_BEFORE_ALARM and MESSAGES_PER_SECOND accordingly in the configuration file.
+
+## Launching
+
+If you installed using the above path of /usr/local/ you can launch with php /user/local/chops.php &
+
+When launched, CHOPS will post a message into your Slack channel like this:-
+
+
+
