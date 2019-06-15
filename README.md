@@ -7,7 +7,7 @@ I find myself more and more interacting with my team and with customers and part
 
 The longer term vision for this project is for a more interactive chatbot that can perform some basic command and control tasks. This initial version is just a case of "tail a file, catch REGEX patterns and drop matches into a channel".
 
-##Dependencies
+## Dependencies
 
 To install it, you'll need to satisfy the following dependencies:
 
