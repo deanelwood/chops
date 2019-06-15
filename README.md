@@ -12,6 +12,7 @@ The longer term vision for this project is for a more interactive chatbot that c
 To install it, you'll need to satisfy the following dependencies:
 
 * [PHP CLI](https://www.php.net/manual/en/features.commandline.php)
+* [tail](https://en.wikipedia.org/wiki/Tail_(Unix))
 
 PHP CLI is usually available on most common distributions. Installing this on a recent Fedora, for example, is very simple:
 
@@ -20,7 +21,9 @@ PHP CLI is usually available on most common distributions. Installing this on a 
 On Ubuntu or Debian, it would require something like this:
 
     apt-get install php-cli
-    
+
+I've not yet come across a Linux distribution that does not have tail installed.
+
 ## Installation
 
 Once you have installed the dependencies, get the code:
