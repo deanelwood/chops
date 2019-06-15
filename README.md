@@ -9,3 +9,8 @@ The longer term vision for this project is for a more interactive chatbot that c
 
 # installation
 
+You need PHP-CLI:
+
+apt-get install php-cli
+
+Install this code somewhere and then configure by editing config.php.
