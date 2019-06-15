@@ -41,21 +41,21 @@ Once you have created your app and Slack has given you a URL to use for the webh
 
 ## Configuration
 
-You will need to edit some values in /usr/local/chops/common/config.php, at least these:
+You will need to edit some values in /usr/local/chops/chops.conf, at least these:
 
-	define("_SLACK_WEB_HOOK_URL",    "<YOUR-WEB-HOOK-URL>");
-	define("_LOG_FILE_TAIL",         "<YOUR-INTERESTING-LOG-FILE>");
-	define("_WARN_PATTERN",          "/<PATTERN_WARN>/");
-	define("_ERROR_PATTERN",         "/<PATTERN_ERROR>/");
+	slackurl=
+	logfile=
+	warnpattern=
+	errorpattern=
 
 An example configuration that monitors the file /var/log/myapp.log might look like this:
 
-	define("_SLACK_WEB_HOOK_URL",    "https://hooks.slack.com/services/24wartdgfx/24rawedgfxc");
-	define("_LOG_FILE_TAIL",         "/var/log/myapp.log");
-	define("_WARN_PATTERN",          "/WARN/");
-	define("_ERROR_PATTERN",         "/ERROR/");
+	slackurl=https://hooks.slack.com/services/<uuid>/
+	logfile=/var/log/myapp.log
+	warnpattern=/WARN/
+	errorpattern=/ERR/
 
-With this example configuration, any lines in /var/log/myapp.log that are spotted containing the text "ERROR" will be sent immediately to your Slack channel. Any lines that contain the text "WARN" will be counted and if more than 3 are seen in a space of 5 minutes a message will be posted into the Slack channel. You can change these presets by altering the values 3 and 5 for WARNINGS_BEFORE_ALARM and MESSAGES_PER_SECOND accordingly in the configuration file.
+With this example configuration, any lines in /var/log/myapp.log that are spotted containing the text "ERR" will be sent immediately to your Slack channel. Any lines that contain the text "WARN" will be counted and if more than 3 are seen in a space of 5 minutes a message will be posted into the Slack channel. You can change these presets by altering the values 3 and 5 for _warningsbeforealarm_ and _warningswindow_ accordingly in the configuration file.
 
 ## Launching
 
