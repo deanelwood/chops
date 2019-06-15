@@ -60,7 +60,7 @@ If you installed using the above path of /usr/local/ you can launch with php /us
 
 When launched, CHOPS will post a message into your Slack channel like this:-
 
-![CHOPS launch message](https://octodex.github.com/images/yaktocat.png)
+![CHOPS launch message](https://user-images.githubusercontent.com/942112/59548665-78e2eb80-8f4a-11e9-917d-7397b338b044.png)
 
 ## Contributing
 
