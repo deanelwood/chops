@@ -14,3 +14,5 @@ You need PHP-CLI:
 apt-get install php-cli
 
 Install this code somewhere and then configure by editing config.php.
+
+You can then launch with php /path/to/chops.php &
