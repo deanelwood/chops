@@ -32,7 +32,7 @@ Once you have installed the dependencies, get the code:
 
 You will need a Web Hook URL to the Slack channel that you wish to post log messages into. I recommend that you start here:
 
-* [Slack Incoming WebHooks] {https://api.slack.com/incoming-webhooks#getting-started}
+* [Slack Incoming WebHooks] (https://api.slack.com/incoming-webhooks#getting-started)
 
 Once you have created your app and Slack has given you a URL to use for the webhook you can configure CHOPS.
 
@@ -60,5 +60,16 @@ If you installed using the above path of /usr/local/ you can launch with php /us
 
 When launched, CHOPS will post a message into your Slack channel like this:-
 
+![CHOPS launch message](https://octodex.github.com/images/yaktocat.png)
 
+## Contributing
 
+You can contribute to the project by [forking](https://help.github.com/articles/fork-a-repo) and submitting a pull request. (If you are new to GitHub, you might start with a [basic tutorial](https://help.github.com/articles/set-up-git).)
+
+All contributors retain the original copyright to their code, but by contributing to this project, grant a world-wide, royalty-free, perpetual, irrevocable, non-exclusive, transferable license to all users under the terms of the [MIT License](http://opensource.org/licenses/mit-license.php).
+
+## License
+
+This project constitutes an original work.
+
+You may use this project under the [MIT License](http://opensource.org/licenses/mit-license.php).
